@@ -439,7 +439,7 @@
      <x>0</x>
      <y>0</y>
      <width>1471</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -458,7 +458,22 @@
     <property name="title">
      <string>Setting</string>
     </property>
-    <addaction name="actionMqtt"/>
+    <widget class="QMenu" name="menuMqtt">
+     <property name="title">
+      <string>Mqtt</string>
+     </property>
+     <widget class="QMenu" name="menuTopic">
+      <property name="title">
+       <string>Topic</string>
+      </property>
+      <addaction name="actionSubscribe"/>
+      <addaction name="actionPublish"/>
+     </widget>
+     <addaction name="separator"/>
+     <addaction name="actionBrokerInfo"/>
+     <addaction name="menuTopic"/>
+    </widget>
+    <addaction name="menuMqtt"/>
     <addaction name="actionNetwork"/>
    </widget>
    <widget class="QMenu" name="menuView">
@@ -511,11 +526,6 @@
   <action name="actionExport_3">
    <property name="text">
     <string>Export</string>
-   </property>
-  </action>
-  <action name="actionMqtt">
-   <property name="text">
-    <string>Mqtt</string>
    </property>
   </action>
   <action name="actionZoom_Out">
@@ -571,6 +581,21 @@
   <action name="actionZoom_In">
    <property name="text">
     <string>Zoom In</string>
+   </property>
+  </action>
+  <action name="actionBrokerInfo">
+   <property name="text">
+    <string>Broker Info</string>
+   </property>
+  </action>
+  <action name="actionSubscribe">
+   <property name="text">
+    <string>Subscribe</string>
+   </property>
+  </action>
+  <action name="actionPublish">
+   <property name="text">
+    <string>Publish</string>
    </property>
   </action>
  </widget>

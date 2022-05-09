@@ -1,8 +1,15 @@
+from PyQt5 import QtCore, QtWidgets
+import sys
 
-import subprocess
-devices = subprocess.check_output(['netsh', 'wlan', 'show', 'networks'])
-devices = devices.decode('ascii')
-devices= devices.replace("\r", "")
-for each in devices.split("\n"):
-    if each.startswith("SSID"):
-        print(each)
+
+class MainWindow(QtWidgets.QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Should close")
+        QtCore.QTimer.singleShot(0, self.close)
+
+
+app = QtWidgets.QApplication(sys.argv)
+w = MainWindow()
+w.show()
+app.exec_()
