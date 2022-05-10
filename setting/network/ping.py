@@ -6,5 +6,3 @@ def ping(host):
     command = ['ping', param, '1', host]
 
     return subprocess.call(command) == 0
-
-print(ping('google.cosm'))

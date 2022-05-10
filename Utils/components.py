@@ -3,10 +3,17 @@ from PyQt5 import QtWidgets
 
 def component_factory(self):
     self.file_open = self.findChild(QtWidgets.QAction, "actionOpen")
-    self.file_save = self.findChild(QtWidgets.QAction, "actionSave")
-    self.file_import = self.findChild(QtWidgets.QAction, "actionImport")
-    self.file_export = self.findChild(QtWidgets.QAction, "actionExport_3")
+    self.file_open.setShortcut("Ctrl+O")
 
+    self.file_save = self.findChild(QtWidgets.QAction, "actionSave")
+    self.file_save.setShortcut("Ctrl+S")
+
+    self.file_import = self.findChild(QtWidgets.QAction, "actionImport")
+    self.file_import.setShortcut("Ctrl+I")
+
+    self.file_export = self.findChild(QtWidgets.QAction, "actionExport_3")
+    self.file_export.setShortcut("Ctrl+E")
+    
     self.setting_mqtt = self.findChild(QtWidgets.QAction, "actionBrokerInfo")
     self.setting_network = self.findChild(QtWidgets.QAction, "actionNetwork")
 

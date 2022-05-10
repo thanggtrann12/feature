@@ -20,5 +20,10 @@ class Ui_Dialog(QtWidgets.QMainWindow):
             QtWidgets.QListWidget, "list_networks")
         self.scan_button = self.findChild(QtWidgets.QPushButton, "scan_button")
         self.scan_button.clicked.connect(lambda: scan_network(self))
-        self.connect_button.clicked.connect(lambda: connect_network(
-            self.txt_ssid.text(), self.txt_password.text()))
+        self.list_of_network.itemDoubleClicked.connect(self.set_ssid)
+        self.connect_button.clicked.connect(lambda: connect_network(self))
+
+    def set_ssid(self):
+        ssid_txt = self.list_of_network.currentItem().text()
+        index = ssid_txt.index(":")
+        self.txt_ssid.setText(ssid_txt[index+1:])
