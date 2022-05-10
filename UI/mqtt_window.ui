@@ -6,19 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>356</width>
+    <width>440</width>
     <height>356</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>356</width>
+    <width>440</width>
     <height>356</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>356</width>
+    <width>440</width>
     <height>356</height>
    </size>
   </property>
@@ -32,9 +32,9 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>10</x>
       <y>0</y>
-      <width>330</width>
+      <width>403</width>
       <height>286</height>
      </rect>
     </property>
@@ -224,7 +224,27 @@
       </layout>
      </item>
      <item>
+      <widget class="QProgressBar" name="progressBar">
+       <property name="maximumSize">
+        <size>
+         <width>400</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="value">
+        <number>24</number>
+       </property>
+      </widget>
+     </item>
+     <item>
       <layout class="QHBoxLayout" name="horizontalLayout_5">
+       <item>
+        <widget class="QCheckBox" name="default_button">
+         <property name="text">
+          <string>Use default broker</string>
+         </property>
+        </widget>
+       </item>
        <item>
         <widget class="QLabel" name="label_5">
          <property name="maximumSize">
@@ -252,7 +272,7 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>60</x>
+      <x>70</x>
       <y>290</y>
       <width>241</width>
       <height>27</height>
@@ -278,9 +298,9 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="cancle_button">
+      <widget class="QPushButton" name="topic_button">
        <property name="text">
-        <string>CANCLE</string>
+        <string>TOPIC</string>
        </property>
       </widget>
      </item>
@@ -292,8 +312,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>356</width>
-     <height>21</height>
+     <width>440</width>
+     <height>22</height>
     </rect>
    </property>
   </widget>

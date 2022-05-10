@@ -16,9 +16,10 @@ def component_factory(self):
     
     self.setting_mqtt = self.findChild(QtWidgets.QAction, "actionBrokerInfo")
     self.setting_network = self.findChild(QtWidgets.QAction, "actionNetwork")
-
-    self.help_about = self.findChild(QtWidgets.QAction, "actionAbout_IAC")
-    self.help_author = self.findChild(QtWidgets.QAction, "actionAuthor")
+    self.setting_serial = self.findChild(QtWidgets.QAction, "actionSerial_2")
+    
+    self.about_IAC = self.findChild(QtWidgets.QAction, "actionAbout_IAC")
+    self.about_author = self.findChild(QtWidgets.QAction, "actionAuthor")
 
     self.view_dark_mode = self.findChild(QtWidgets.QAction, "actionDark_Mode")
     self.view_light_mode = self.findChild(
@@ -27,3 +28,9 @@ def component_factory(self):
     self.view_zoom_out = self.findChild(QtWidgets.QAction, "actionZoom_Out")
 
     self.data_view = self.findChild(QtWidgets.QAction, "team_container")
+
+    self.quick_guide = self.findChild(QtWidgets.QAction, "actionQuick_Guide")
+
+    self.fanpage = self.findChild(QtWidgets.QAction, "actionFanpage")
+
+    

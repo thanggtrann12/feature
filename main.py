@@ -1,10 +1,12 @@
 from PyQt5 import QtWidgets, QtGui, uic
 import sys
 from Utils.components import component_factory
-from Utils.event import file_event, setting_event, help_event, view_event
-import qdarktheme
+from Utils.event import file_event, setting_event, about_event, view_event
 from setting.view import dark_mode, light_mode, zoom_in, zoom_out
 from setting.network.ping import ping
+from setting.mqtt.connect_mqtt import stop_client
+
+stop_flag = False
 class Ui(QtWidgets.QMainWindow):
     def __init__(self):
         super(Ui, self).__init__()
@@ -17,7 +19,7 @@ class Ui(QtWidgets.QMainWindow):
             self.statusBar().showMessage("Network is connected.")
         file_event.file_button_event(self)
         setting_event.setting_button_event(self)
-        help_event.help_button_event(self)
+        about_event.about_button_event(self)
         view_event.view_button_event(self)
         self.show()
         
@@ -33,7 +35,11 @@ class Ui(QtWidgets.QMainWindow):
         
         reply = msg.exec()
         if reply == QtWidgets.QMessageBox.Yes:
+            stop_client()
             event.accept()
+            sys.exit()
+            
+            
         else:
             event.ignore()
 
