@@ -1,28 +1,47 @@
+from random import randint
+from threading import Thread
 from PyQt5 import QtWidgets, QtGui, uic
 import sys
-from Utils.components import component_factory
-from Utils.event import file_event, setting_event, about_event, view_event
-from setting.view import dark_mode, light_mode, zoom_in, zoom_out
-from setting.network.ping import ping
-from setting.mqtt.connect_mqtt import stop_client
+from PcToArduino import PcToArduino
+from dark_mode import set_dark_mode, set_light_mode
+from components import component
+from red import Red_Ui_Dialog 
+from blue import Blue_Ui_Dialog
+from PyQt5.QtCore import *
+_serialConnection = None
 
-stop_flag = False
+
 class Ui(QtWidgets.QMainWindow):
+    
     def __init__(self):
         super(Ui, self).__init__()
         uic.loadUi("UI/main.ui", self)
-        component_factory(self)
-        self.window = None
-        if (ping('google.com') != True):
-            self.statusBar().showMessage("Network is not connected. Go to setting - > network to connect network.")
-        else:
-            self.statusBar().showMessage("Network is connected.")
-        file_event.file_button_event(self)
-        setting_event.setting_button_event(self)
-        about_event.about_button_event(self)
-        view_event.view_button_event(self)
-        self.show()
+        component(self)        
+        self.RedWindow = Red_Ui_Dialog()
+        self.BlueWindow = Blue_Ui_Dialog()
+        self.mode  = None
+        if self.mode is not None:
+          self.mode = set_dark_mode(self)
+        self.show_button.clicked.connect(self.open)
+        self.stop_button.clicked.connect(self.close)
+        timer = QTimer(self)
+        timer.timeout.connect(self.threading)
+        timer.start(1)
+
+    def threading(self):
+        self.RedWindow.change(str(randint(1, 100)))
         
+    def open_dialog(self):
+        
+        self.RedWindow.show()
+        self.BlueWindow.show()
+
+    def close(self) :
+        self.RedWindow.close()
+        self.BlueWindow.close()
+
+    def open(self):
+        self.open_dialog()
 
     def closeEvent(self, event):
         msg = QtWidgets.QMessageBox()
@@ -35,16 +54,14 @@ class Ui(QtWidgets.QMainWindow):
         
         reply = msg.exec()
         if reply == QtWidgets.QMessageBox.Yes:
-            stop_client()
             event.accept()
-            sys.exit()
             
-            
+            sys.exit()    
         else:
             event.ignore()
 
-
-app = QtWidgets.QApplication(sys.argv)
-window = Ui()
-window.show()
-app.exec_()
+if __name__ == "__main__":
+    app = QtWidgets.QApplication(sys.argv)
+    window = Ui()
+    window.show()
+    app.exec_()
