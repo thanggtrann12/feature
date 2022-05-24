@@ -37,9 +37,7 @@ class Ui(QtWidgets.QMainWindow):
         if reply == QtWidgets.QMessageBox.Yes:
             stop_client()
             event.accept()
-            sys.exit()
-            
-            
+            sys.exit()    
         else:
             event.ignore()
 
